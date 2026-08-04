@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trail Base Kobe | トレイルベース神戸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:   #1A2E1F;
+      --amber:    #D4943A;
+      --amber-lt: #E8B86D;
+      --cream:    #F2EDE4;
+      --charcoal: #2C2C2C;
+      --mid:      #6B7B6E;
+      --white:    #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--charcoal);
+      color: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(26,46,31,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212,148,58,0.2);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+      font-weight: 300;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--amber); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 0 6vw;
+      overflow: hidden;
+      background: linear-gradient(to right, rgba(13,26,16,0.75) 0%, rgba(26,46,31,0.55) 40%, rgba(42,31,14,0.7) 100%), url("top.png") center center / cover no-repeat;
+    }
+
+    
+    }
+
+    /* 星のドット */
+    .stars {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 5%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 25% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 45%, rgba(255,255,255,0.3) 0%, transparent 100%);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+    .hero-title span { color: var(--amber); }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.9s;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+    .hero-copy {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.7);
+      max-width: 480px;
+      line-height: 1.9;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+      margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: inline-flex; gap: 1rem; align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.5s;
+    }
+    .btn-primary {
+      padding: 0.85rem 2.2rem;
+      background: var(--amber);
+      color: var(--forest);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--amber-lt); transform: translateY(-2px); }
+    .btn-secondary {
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(242,237,228,0.4);
+      color: var(--cream);
+      font-size: 0.82rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+    .hero-stats {
+      position: absolute; right: 6vw; bottom: 3rem;
+      display: flex; gap: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.8s;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--amber);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      color: rgba(242,237,228,0.6);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--forest);
+      padding: 7rem 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .section-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      margin-bottom: 2rem;
+    }
+    .about-body {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 2;
+      color: rgba(242,237,228,0.75);
+    }
+    .about-body p + p { margin-top: 1.2rem; }
+    .about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-card {
+      background: rgba(242,237,228,0.05);
+      border-left: 3px solid var(--amber);
+      padding: 1.5rem 1.8rem;
+    }
+    .about-card-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+    .about-card-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .about-card-body {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.65);
+      line-height: 1.8;
+    }
+    .about-card-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .about-card-text { flex: 1; }
+    .about-card-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid var(--amber);
+      flex-shrink: 0;
+    }
+    .about-card-photo-placeholder {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(212,148,58,0.15);
+      border: 2px dashed var(--amber);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      color: var(--amber);
+      letter-spacing: 0.06em;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── EVENTS ── */
+    .events {
+      background: var(--charcoal);
+      padding: 7rem 6vw;
+    }
+    .events-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+    .category-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .tab {
+      padding: 0.45rem 1.1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      border: 1px solid rgba(242,237,228,0.2);
+      color: rgba(242,237,228,0.5);
+      background: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+    .tab.active, .tab:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(212,148,58,0.08);
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .event-card {
+      background: rgba(26,46,31,0.5);
+      border: 1px solid rgba(242,237,228,0.08);
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--amber);
+      transition: height 0.3s ease;
+    }
+    .event-card:hover { border-color: rgba(212,148,58,0.4); transform: translateY(-4px); }
+    .event-card:hover::before { height: 100%; }
+    .event-card-inner {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .event-card-text { flex: 1; min-width: 0; }
+    .event-card-photo {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      object-position: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(212,148,58,0.3);
+    }
+    .event-card-photo-placeholder {
+      width: 160px;
+      height: 160px;
+      flex-shrink: 0;
+      background: rgba(212,148,58,0.07);
+      border: 1px dashed rgba(212,148,58,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      color: rgba(212,148,58,0.5);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+    .event-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .event-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+    .event-meta {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.5);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .event-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.65);
+      line-height: 1.8;
+    }
+    .event-theme {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(242,237,228,0.08);
+      font-size: 0.75rem;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy {
+      background: var(--forest);
+      padding: 7rem 6vw;
+      text-align: center;
+    }
+    .philosophy-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+    }
+    .philosophy-quote span { color: var(--amber); }
+    .philosophy-body {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.65);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 2;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: #0d1208;
+      padding: 7rem 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-info { }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(242,237,228,0.65);
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      border: 1px solid rgba(242,237,228,0.1);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--amber); color: var(--amber); }
+    .contact-link-icon { font-size: 1.1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(242,237,228,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: rgba(242,237,228,0.05);
+      border: 1px solid rgba(242,237,228,0.15);
+      color: var(--cream);
+      padding: 0.85rem 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--amber); }
+    .form-textarea { height: 130px; resize: vertical; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      padding: 2.5rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(212,148,58,0.2);
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+    }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(242,237,228,0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 0 5vw; }
+      .hero-stats { position: static; margin-top: 2rem; justify-content: flex-start; }
+      .about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 5vw; }
+      .events { padding: 5rem 5vw; }
+      .events-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .contact { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 5vw; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .philosophy { padding: 5rem 5vw; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:0.6rem;">
+  <img src="logo.png" alt="Trail Base Kobe Logo" style="height:34px;width:auto;filter:brightness(0) saturate(100%) invert(72%) sepia(48%) saturate(500%) hue-rotate(5deg) brightness(108%);">
+  Trail Base Kobe
+</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars"></div>
+
+  <span class="hero-eyebrow">Trail Base Kobe — Kobe, Japan</span>
+  <h1 class="hero-title">走った道が、<br><span>あなたを変える。</span></h1>
+  <p class="hero-subtitle">神戸発。すべての走る人のために。</p>
+  <p class="hero-copy">
+    初めてのジョギングから100kmの縦走まで。<br>
+    トレイルベース神戸は、走ることを通じて<br>
+    人と街と山をつなぐイベントを届けています。
+  </p>
+  <div class="hero-cta">
+    <a href="#events" class="btn-primary">イベントを見る</a>
+    <a href="#about" class="btn-secondary">About</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">25+</span>
+      <span class="stat-label">開催イベント</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100k+</span>
+      <span class="stat-label">最長距離</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4.79</span>
+      <span class="stat-label">平均評価</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <span class="section-eyebrow">About Us</span>
+    <h2 class="section-title">トレイルベース<br>神戸とは</h2>
+    <div class="about-body">
+      <p>
+        神戸・北野に拠点を置くランニング・トレイルランニングのTryOn（試し履き）ショップです。
+        ロード・トレイルを問わず、イベントの開催もしております。
+        トレイルイベントでは六甲山を望むこの場所から、初心者向けの講習会、ロングトレイル縦走ツアーを開催。
+        ロードでは、神戸・北野という立地を活かして、みなとのもり公園で試し履き会の実施や、バックヤードウルトラ体験イベント、神戸の名所を走ってまわるイベントなど、幅広い企画を届けています。
+      </p>
+      <p>
+        「走ること」を特別なものにするのではなく、
+        日常の延長として自然の中に踏み出せる場所をつくること。
+        それがトレイルベース神戸の原点です。
+      </p>
+      <p>
+        ロングトレイル縦走ツアーでは、車両サポート・エイド・引率スタッフ体制を整えることで、
+        単独では踏み込めなかったルートへの挑戦を可能にします。
+      </p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-card">
+      <div class="about-card-inner">
+        <div class="about-card-text">
+          <div class="about-card-name">村田 尚也</div>
+          <div class="about-card-role">主催 / Trail Base Kobe 代表</div>
+          <div class="about-card-body">
+            2019年よりトレイルランニングを開始。くろんど輪舞曲120km総合3位、
+            比叡山トレイル50K 2年連続サブ8、生駒トレイル22km総合優勝など、
+            各地のレースで活躍。神戸初のランニング・トレイルランニングTry Onショップを立ち上げる。
+          </div>
+        </div>
+        <!-- 村田さんの写真: src属性に画像パスまたはbase64を入力 -->
+        <!-- <img src="murata.jpg" alt="村田 尚也" class="about-card-photo"> -->
+        <div class="about-card-photo-placeholder">写真<br>追加予定</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-inner">
+        <div class="about-card-text">
+          <div class="about-card-name">安井 和史</div>
+          <div class="about-card-role">トレイルイベント統括スタッフ / TSS</div>
+          <div class="about-card-body">
+            六甲縦走キャノンボールラン7回優勝、KAMI100 総合4位・年代1位、
+            京都グレートラウンド130km優勝。TJAR2026出場予定。
+            各地のレースで優勝・入賞経験をもつトップウルトラランナーが
+            多くのツアーで統括を務める。
+          </div>
+        </div>
+        <!-- 安井さんの写真: src属性に画像パスまたはbase64を入力 -->
+        <!-- <img src="yasui.jpg" alt="安井 和史" class="about-card-photo"> -->
+        <div class="about-card-photo-placeholder">写真<br>追加予定</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="events-header">
+    <div>
+      <span class="section-eyebrow">Event Archive</span>
+      <h2 class="section-title">開催イベント実績</h2>
+      <div class="category-tabs">
+        <button class="tab active" onclick="filterEvents('all', this)">All</button>
+        <button class="tab" onclick="filterEvents('縦走', this)">縦走ツアー</button>
+        <button class="tab" onclick="filterEvents('バックヤード', this)">バックヤード</button>
+        <button class="tab" onclick="filterEvents('講習', this)">講習・練習会</button>
+        <button class="tab" onclick="filterEvents('街ラン', this)">街ラン</button>
+        <button class="tab" onclick="filterEvents('島', this)">ユニーク</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="events-grid" id="eventsGrid">
+
+    <div class="event-card" data-cat="縦走">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">ウルトラダイトレ縦走ツアー（第1回）</div>
+          <div class="event-meta">2025年8月｜奈良〜大阪｜105km / 5600mD+</div>
+          <div class="event-desc">関屋駅からみさき公園まで、ダイヤモンドトレールの全行程105kmを車サポート付きで縦走。まやとねこ×TSSのコラボで実現したトレイルベース神戸の原点。NNORMALシューズ試し履きも同時開催。</div>
+          <div class="event-theme">— はじまりの一歩</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="バックヤード">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ"ごっこ" with 深北男塾</div>
+          <div class="event-meta">2026年2月｜六甲山周辺｜6.7km周回</div>
+          <div class="event-desc">バレンタインデーの朝、深北男塾のしんしん＆イケハータと一緒にバックヤードウルトラ形式で走った気軽な体験イベント。参加費500円、笑い声が絶えない一日。</div>
+          <div class="event-theme">— 走ることは、遊ぶこと</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="講習">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">ゆるっとはじめるトレイルランニング 講習＆練習会</div>
+          <div class="event-meta">2026年春〜夏｜六甲山周辺｜複数回開催</div>
+          <div class="event-desc">登り・下りの走り方レクチャー、動画フォームチェック、シューズ試し履きがセット。六甲縦走キャノンボール5回優勝の安井和史氏が講師を担当し、初心者が安心して踏み出せる場を提供。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="講習・練習会" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="バックヤード">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ体験イベント with 深北男塾 @GREENIA</div>
+          <div class="event-meta">2026年7月｜六甲山アスレチックパークGREENIA｜1.1km×6周</div>
+          <div class="event-desc">六甲グリーニアの旧ゴーカートコースを使った1周1.1kmのショートループ。深北男塾とのコラボで、バックヤードウルトラの楽しさをレベル問わず多くの人へ。</div>
+          <div class="event-theme">— 1周1.1km、ぐるぐると、仲間と</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="バックヤード">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラトライアル 真夏のオーバーナイトチャレンジ @掬星台</div>
+          <div class="event-meta">2026年7月｜六甲山・掬星台｜6.7km×15周 / 15時間</div>
+          <div class="event-desc">18時スタート〜翌9時の15時間、掬星台で1時間ごとに6.7kmを周回。バックヤードウルトラ日本代表・水野倫太郎選手がゲスト参戦。夜間走・暑さ・眠気と向き合う、本番さながらの一夜。</div>
+          <div class="event-theme">— 夜の山で、限界の先へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="縦走">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 高島トレイル全縦走ツアー2026</div>
+          <div class="event-meta">2026年7月｜滋賀県高島市｜80km / 6100mD+</div>
+          <div class="event-desc">琵琶湖北西部に広がる高島トレイルを、12の山をすべてピークハントしながら一気に縦走。上級者でも単独困難なルートを、車サポート＆エイド9ヵ所で完走できる2日間。</div>
+          <div class="event-theme">— 日本海と琵琶湖、両方見える稜線へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="街ラン">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">街ラン</span>
+          <div class="event-title">山麓リボンの道ラン 甲南山手から北野へ</div>
+          <div class="event-meta">2026年8月｜神戸市｜約25km</div>
+          <div class="event-desc">神戸市「坂アンバサダー」川地智之さんの案内で、甲南山手から北野まで神戸の山すそをたどる25km。速さを競わず、坂の先にある景色を味わいながら走る新感覚のシティラン。</div>
+          <div class="event-theme">— 知っているようで知らなかった、神戸の道</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="街ラン" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="街ラン">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">街ラン</span>
+          <div class="event-title">山麓リボンの道ラン 北野から舞子へ</div>
+          <div class="event-meta">2026年8月｜神戸市｜約30km</div>
+          <div class="event-desc">北野の異人館を出発し、長田・須磨・垂水を経て明石海峡を望む舞子へ。坂アンバサダー案内のもと、神戸を東西に走り抜ける30km。ゴールに広がる海が忘れられない。</div>
+          <div class="event-theme">— 坂の先に、明石海峡大橋が見える</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="街ラン" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="縦走">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 ウルトラダイトレ縦走ツアー2026</div>
+          <div class="event-meta">2026年8月｜奈良〜大阪｜102km / 6600mD+</div>
+          <div class="event-desc">TJAR2026参加予定の安井和史氏を統括に迎え、関屋駅からみさき公園まで102kmを準個人走スタイルで挑める体制。4つの参加部門で全日・部分参加に対応。</div>
+          <div class="event-theme">— 憧れの100kmに、確かな一歩で</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="縦走">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第1回 世界遺産 黒河道＆熊野古道小辺路 縦走ツアー2026</div>
+          <div class="event-meta">2026年10月｜和歌山県｜80km / 5200mD+</div>
+          <div class="event-desc">橋本駅から熊野本宮大社まで、世界遺産の道を2日間で走り抜ける。スタッフ専属の半個人走スタイルで、高野山経由の荘厳なルートに挑む。</div>
+          <div class="event-theme">— 千年の道を、走る</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="縦走">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 鈴鹿セブンマウンテン縦走ツアー2026</div>
+          <div class="event-meta">2026年10月｜三重・滋賀｜44.5km / 6100mD+</div>
+          <div class="event-desc">鈴鹿山脈の主要7山を車サポート＆エイド付きで縦走。急峻な岩峰や深い森を越えながら2県境を走り抜ける本格縦走ツアー。NNORMALシューズのトライオンも実施。</div>
+          <div class="event-theme">— 鈴鹿の7つの頂を、仲間と越える</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-cat="島">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span class="event-tag">ユニークコース</span>
+          <div class="event-title">沼島ONOKOROラウンドトレイル2026 vol.2</div>
+          <div class="event-meta">2026年10月｜兵庫県・沼島｜30km〜100mile</div>
+          <div class="event-desc">国生み神話の地・沼島の外周9.2kmを周回。30km〜100mileまで4カテゴリーで挑戦でき、いたるところで海が見える絶景コース。ITRAポイント申請予定の本格イベント。</div>
+          <div class="event-theme">— 神話の島を、ぐるぐると</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" alt="ユニークコース" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <span class="section-eyebrow">Our Philosophy</span>
+  <div class="philosophy-quote">
+    「一人では踏み込めなかった道へ、<br>
+    <span>ともに走る仲間がいれば必ず越えられる。」</span>
+  </div>
+  <p class="philosophy-body">
+    トレイルベース神戸は、「走ること」を通じて人と自然をつなぐ場所です。
+    初めての山道も、100kmの縦走も、正しいサポートと仲間がいれば挑戦できる。
+    これからも、あなたの「初めて」と「挑戦」を全力でサポートします。
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <span class="section-eyebrow">Contact</span>
+    <h2 class="section-title">お問い合わせ</h2>
+    <p style="font-size:0.88rem;font-weight:300;color:rgba(242,237,228,0.65);line-height:2;margin-bottom:2rem;">
+      イベントへのご質問、取材・協賛のご依頼など、<br>
+      お気軽にお問い合わせください。
+    </p>
+    <div class="contact-links">
+      <a href="https://www.instagram.com/trailbase_kobe/" class="contact-link" target="_blank">
+        <span class="contact-link-icon">📷</span>
+        Instagram @trailbase_kobe
+      </a>
+      <a href="mailto:st.naoya13@gmail.com" class="contact-link">
+        <span class="contact-link-icon">✉️</span>
+        st.naoya13@gmail.com
+      </a>
+      <a href="https://moshicom.com/user/155731/" class="contact-link" target="_blank">
+        <span class="contact-link-icon">🏃</span>
+        e-モシコム イベント一覧
+      </a>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-group">
+      <label class="form-label">お名前</label>
+      <input type="text" class="form-input" placeholder="山田 太郎">
+    </div>
+    <div class="form-group">
+      <label class="form-label">メールアドレス</label>
+      <input type="email" class="form-input" placeholder="example@email.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">お問い合わせ内容</label>
+      <textarea class="form-textarea" placeholder="イベントへのご質問、協賛・取材のご依頼など"></textarea>
+    </div>
+    <a href="mailto:st.naoya13@gmail.com" class="btn-primary" style="display:inline-block;margin-top:0.5rem;">送信する</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Trail Base Kobe</div>
+  <div class="footer-copy">© 2025 Trail Base Kobe LLC. All rights reserved.</div>
+</footer>
+
+<script>
+  // カテゴリーフィルター
+  function filterEvents(cat, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.event-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // スクロールフェードイン
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.event-card, .about-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.25s, transform 0.25s';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
