@@ -618,188 +618,412 @@
   <div class="events-header">
     <div>
       <span class="section-eyebrow">Event Archive</span>
-      <h2 class="section-title">開催イベント実績</h2>
+      <h2 class="section-title">開催イベント一覧</h2>
       <div class="category-tabs">
-        <button class="tab active" onclick="filterEvents('all', this)">All</button>
-        <button class="tab" onclick="filterEvents('縦走', this)">縦走ツアー</button>
-        <button class="tab" onclick="filterEvents('バックヤード', this)">バックヤード</button>
-        <button class="tab" onclick="filterEvents('講習', this)">講習・練習会</button>
-        <button class="tab" onclick="filterEvents('街ラン', this)">街ラン</button>
-        <button class="tab" onclick="filterEvents('島', this)">ユニーク</button>
+        <button class="tab active" onclick="filterEvents('all','all',this)">すべて（28件）</button>
+        <button class="tab" onclick="filterEvents('all','open',this)">募集中（5件）</button>
+        <button class="tab" onclick="filterEvents('all','closed',this)">開催終了（23件）</button>
+        <button class="tab" onclick="filterEvents('縦走','all',this)">縦走ツアー</button>
+        <button class="tab" onclick="filterEvents('バックヤード','all',this)">バックヤード</button>
+        <button class="tab" onclick="filterEvents('講習','all',this)">講習・練習会</button>
+        <button class="tab" onclick="filterEvents('街ラン','all',this)">街ラン</button>
+        <button class="tab" onclick="filterEvents('島','all',this)">ユニーク</button>
       </div>
     </div>
   </div>
-
   <div class="events-grid" id="eventsGrid">
-
-    <div class="event-card" data-cat="縦走">
+    <a href="https://moshicom.com/149509" target="_blank" class="event-card" data-cat="島" data-status="open" style="text-decoration:none;opacity:1;">
       <div class="event-card-inner">
         <div class="event-card-text">
-          <span class="event-tag">縦走ツアー</span>
-          <div class="event-title">ウルトラダイトレ縦走ツアー（第1回）</div>
-          <div class="event-meta">2025年8月｜奈良〜大阪｜105km / 5600mD+</div>
-          <div class="event-desc">関屋駅からみさき公園まで、ダイヤモンドトレールの全行程105kmを車サポート付きで縦走。まやとねこ×TSSのコラボで実現したトレイルベース神戸の原点。NNORMALシューズ試し履きも同時開催。</div>
-          <div class="event-theme">— はじまりの一歩</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="バックヤード">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">バックヤードウルトラ</span>
-          <div class="event-title">バックヤードウルトラ"ごっこ" with 深北男塾</div>
-          <div class="event-meta">2026年2月｜六甲山周辺｜6.7km周回</div>
-          <div class="event-desc">バレンタインデーの朝、深北男塾のしんしん＆イケハータと一緒にバックヤードウルトラ形式で走った気軽な体験イベント。参加費500円、笑い声が絶えない一日。</div>
-          <div class="event-theme">— 走ることは、遊ぶこと</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="講習">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">講習・練習会</span>
-          <div class="event-title">ゆるっとはじめるトレイルランニング 講習＆練習会</div>
-          <div class="event-meta">2026年春〜夏｜六甲山周辺｜複数回開催</div>
-          <div class="event-desc">登り・下りの走り方レクチャー、動画フォームチェック、シューズ試し履きがセット。六甲縦走キャノンボール5回優勝の安井和史氏が講師を担当し、初心者が安心して踏み出せる場を提供。</div>
-          <div class="event-theme">— ここから始まる、山との出会い</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="講習・練習会" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="バックヤード">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">バックヤードウルトラ</span>
-          <div class="event-title">バックヤードウルトラ体験イベント with 深北男塾 @GREENIA</div>
-          <div class="event-meta">2026年7月｜六甲山アスレチックパークGREENIA｜1.1km×6周</div>
-          <div class="event-desc">六甲グリーニアの旧ゴーカートコースを使った1周1.1kmのショートループ。深北男塾とのコラボで、バックヤードウルトラの楽しさをレベル問わず多くの人へ。</div>
-          <div class="event-theme">— 1周1.1km、ぐるぐると、仲間と</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="バックヤード">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">バックヤードウルトラ</span>
-          <div class="event-title">バックヤードウルトラトライアル 真夏のオーバーナイトチャレンジ @掬星台</div>
-          <div class="event-meta">2026年7月｜六甲山・掬星台｜6.7km×15周 / 15時間</div>
-          <div class="event-desc">18時スタート〜翌9時の15時間、掬星台で1時間ごとに6.7kmを周回。バックヤードウルトラ日本代表・水野倫太郎選手がゲスト参戦。夜間走・暑さ・眠気と向き合う、本番さながらの一夜。</div>
-          <div class="event-theme">— 夜の山で、限界の先へ</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="バックヤードウルトラ" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="縦走">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">縦走ツアー</span>
-          <div class="event-title">第2回 高島トレイル全縦走ツアー2026</div>
-          <div class="event-meta">2026年7月｜滋賀県高島市｜80km / 6100mD+</div>
-          <div class="event-desc">琵琶湖北西部に広がる高島トレイルを、12の山をすべてピークハントしながら一気に縦走。上級者でも単独困難なルートを、車サポート＆エイド9ヵ所で完走できる2日間。</div>
-          <div class="event-theme">— 日本海と琵琶湖、両方見える稜線へ</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="街ラン">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">街ラン</span>
-          <div class="event-title">山麓リボンの道ラン 甲南山手から北野へ</div>
-          <div class="event-meta">2026年8月｜神戸市｜約25km</div>
-          <div class="event-desc">神戸市「坂アンバサダー」川地智之さんの案内で、甲南山手から北野まで神戸の山すそをたどる25km。速さを競わず、坂の先にある景色を味わいながら走る新感覚のシティラン。</div>
-          <div class="event-theme">— 知っているようで知らなかった、神戸の道</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="街ラン" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="街ラン">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">街ラン</span>
-          <div class="event-title">山麓リボンの道ラン 北野から舞子へ</div>
-          <div class="event-meta">2026年8月｜神戸市｜約30km</div>
-          <div class="event-desc">北野の異人館を出発し、長田・須磨・垂水を経て明石海峡を望む舞子へ。坂アンバサダー案内のもと、神戸を東西に走り抜ける30km。ゴールに広がる海が忘れられない。</div>
-          <div class="event-theme">— 坂の先に、明石海峡大橋が見える</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="街ラン" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="縦走">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">縦走ツアー</span>
-          <div class="event-title">第2回 ウルトラダイトレ縦走ツアー2026</div>
-          <div class="event-meta">2026年8月｜奈良〜大阪｜102km / 6600mD+</div>
-          <div class="event-desc">TJAR2026参加予定の安井和史氏を統括に迎え、関屋駅からみさき公園まで102kmを準個人走スタイルで挑める体制。4つの参加部門で全日・部分参加に対応。</div>
-          <div class="event-theme">— 憧れの100kmに、確かな一歩で</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="縦走">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">縦走ツアー</span>
-          <div class="event-title">第1回 世界遺産 黒河道＆熊野古道小辺路 縦走ツアー2026</div>
-          <div class="event-meta">2026年10月｜和歌山県｜80km / 5200mD+</div>
-          <div class="event-desc">橋本駅から熊野本宮大社まで、世界遺産の道を2日間で走り抜ける。スタッフ専属の半個人走スタイルで、高野山経由の荘厳なルートに挑む。</div>
-          <div class="event-theme">— 千年の道を、走る</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="縦走">
-      <div class="event-card-inner">
-        <div class="event-card-text">
-          <span class="event-tag">縦走ツアー</span>
-          <div class="event-title">第2回 鈴鹿セブンマウンテン縦走ツアー2026</div>
-          <div class="event-meta">2026年10月｜三重・滋賀｜44.5km / 6100mD+</div>
-          <div class="event-desc">鈴鹿山脈の主要7山を車サポート＆エイド付きで縦走。急峻な岩峰や深い森を越えながら2県境を走り抜ける本格縦走ツアー。NNORMALシューズのトライオンも実施。</div>
-          <div class="event-theme">— 鈴鹿の7つの頂を、仲間と越える</div>
-        </div>
-        <!-- 写真: <img src="photo.jpg" alt="縦走ツアー" class="event-card-photo"> -->
-        <div class="event-card-photo-placeholder">Photo</div>
-      </div>
-    </div>
-
-    <div class="event-card" data-cat="島">
-      <div class="event-card-inner">
-        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:var(--forest);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">募集中</span>
           <span class="event-tag">ユニークコース</span>
           <div class="event-title">沼島ONOKOROラウンドトレイル2026 vol.2</div>
-          <div class="event-meta">2026年10月｜兵庫県・沼島｜30km〜100mile</div>
-          <div class="event-desc">国生み神話の地・沼島の外周9.2kmを周回。30km〜100mileまで4カテゴリーで挑戦でき、いたるところで海が見える絶景コース。ITRAポイント申請予定の本格イベント。</div>
+          <div class="event-meta">2026/10/23〜25｜兵庫県・沼島</div>
+          <div class="event-desc">国生み神話の地・沼島の外周9.2kmを周回。30km〜100mileの4カテゴリー。ITRAポイント申請予定。</div>
           <div class="event-theme">— 神話の島を、ぐるぐると</div>
         </div>
-        <!-- 写真: <img src="photo.jpg" alt="ユニークコース" class="event-card-photo"> -->
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
         <div class="event-card-photo-placeholder">Photo</div>
       </div>
-    </div>
-
+    </a>
+    <a href="https://moshicom.com/149338" target="_blank" class="event-card" data-cat="縦走" data-status="open" style="text-decoration:none;opacity:1;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:var(--forest);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">募集中</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 鈴鹿セブンマウンテン縦走ツアー2026（延期開催）</div>
+          <div class="event-meta">2026/10/10〜11｜三重県いなべ市</div>
+          <div class="event-desc">鈴鹿山脈の主要7山を車サポート＆エイド付きで縦走。44.5km / 6100mD+。</div>
+          <div class="event-theme">— 鈴鹿の7つの頂を、仲間と越える</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/150362" target="_blank" class="event-card" data-cat="縦走" data-status="open" style="text-decoration:none;opacity:1;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:var(--forest);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">募集中</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第1回 世界遺産 黒河道＆熊野古道小辺路 縦走ツアー2026</div>
+          <div class="event-meta">2026/10/3〜4｜和歌山県橋本市</div>
+          <div class="event-desc">橋本駅→熊野本宮大社。世界遺産の道80km / 5200mD+を半個人走スタイルで。</div>
+          <div class="event-theme">— 千年の道を、走る</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/149348" target="_blank" class="event-card" data-cat="縦走" data-status="open" style="text-decoration:none;opacity:1;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:var(--forest);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">募集中</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 ウルトラダイトレ縦走ツアー2026 with TSS安井</div>
+          <div class="event-meta">2026/8/22〜23｜奈良県〜大阪府</div>
+          <div class="event-desc">関屋駅→みさき公園。102km / 6600mD+を準個人走スタイルで。4部門対応。</div>
+          <div class="event-theme">— 憧れの100kmに、確かな一歩で</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/150578" target="_blank" class="event-card" data-cat="街ラン" data-status="open" style="text-decoration:none;opacity:1;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:var(--forest);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">募集中</span>
+          <span class="event-tag">街ラン</span>
+          <div class="event-title">山麓リボンの道ラン 北野から舞子へ</div>
+          <div class="event-meta">2026/8/8｜兵庫県神戸市</div>
+          <div class="event-desc">北野〜舞子 約30km。坂アンバサダー川地智之さん案内。明石海峡大橋がゴール。</div>
+          <div class="event-theme">— 坂の先に、明石海峡大橋が見える</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/150574" target="_blank" class="event-card" data-cat="街ラン" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">街ラン</span>
+          <div class="event-title">山麓リボンの道ラン 甲南山手から北野へ</div>
+          <div class="event-meta">2026/8/1｜兵庫県神戸市</div>
+          <div class="event-desc">甲南山手〜北野 約25km。坂アンバサダー川地智之さん案内。神戸の山すそをたどる。</div>
+          <div class="event-theme">— 知っているようで知らなかった、神戸の道</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/148921" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラトライアル 真夏のオーバーナイトチャレンジ@掬星台</div>
+          <div class="event-meta">2026/7/19〜20｜兵庫県・掬星台</div>
+          <div class="event-desc">18時〜翌9時の15時間、6.7km×15周。水野倫太郎選手ゲスト参戦。夜間走練習会。</div>
+          <div class="event-theme">— 夜の山で、限界の先へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/148819" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ体験イベント with 深北男塾 @GREENIA</div>
+          <div class="event-meta">2026/7/12｜兵庫県・六甲山GREENIA</div>
+          <div class="event-desc">1周1.1kmのショートループ×6周。深北男塾コラボ。入場料込み5,000円。レベル問わず。</div>
+          <div class="event-theme">— 1周1.1km、ぐるぐると、仲間と</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/146975" target="_blank" class="event-card" data-cat="縦走" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第2回 高島トレイル全縦走ツアー2026</div>
+          <div class="event-meta">2026/7/25〜26｜滋賀県高島市</div>
+          <div class="event-desc">80km / 6100mD+。12の山をピークハント。日本海と琵琶湖の絶景稜線を縦走。</div>
+          <div class="event-theme">— 日本海と琵琶湖、両方見える稜線へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/143638" target="_blank" class="event-card" data-cat="縦走" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第1回 鈴鹿セブンマウンテン縦走ツアー2026</div>
+          <div class="event-meta">2026/6/27〜28｜三重県・滋賀県</div>
+          <div class="event-desc">鈴鹿7山縦走 44.5km / 6100mD+。NNORMALシューズトライオンも同時開催。</div>
+          <div class="event-theme">— 鈴鹿の7つの頂を、仲間と越える</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/148358" target="_blank" class="event-card" data-cat="島" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">ユニークコース</span>
+          <div class="event-title">沼島ONOKOROラウンドトレイル2026 vol.1</div>
+          <div class="event-meta">2026/5/29〜31｜兵庫県・沼島</div>
+          <div class="event-desc">国生み神話の地・沼島の外周9.2kmを周回する第1回開催。</div>
+          <div class="event-theme">— 神話の島を、ぐるぐると</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/146974" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【6月6日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/6/6｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/144998" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【5月23日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/5/23｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/142605" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">【5月17日】バックヤードウルトラ体験ラン vol.4</div>
+          <div class="event-meta">2026/5/17｜兵庫県・六甲山</div>
+          <div class="event-desc">深北男塾コラボのバックヤード体験イベント第4弾。</div>
+          <div class="event-theme">— 走ることは、遊ぶこと</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/145002" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【5月4日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/5/4｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/142601" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ体験ラン vol.3 with 深北男塾</div>
+          <div class="event-meta">2026/5/4｜兵庫県・六甲山</div>
+          <div class="event-desc">深北男塾コラボのバックヤード体験イベント第3弾。</div>
+          <div class="event-theme">— 走ることは、遊ぶこと</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/144994" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードトライアル 六甲山@掬星台 vol.1</div>
+          <div class="event-meta">2026/5/31｜兵庫県・掬星台</div>
+          <div class="event-desc">掬星台でのバックヤードウルトラ体験ラン。6.7km周回形式。</div>
+          <div class="event-theme">— 本物の感覚を、気軽に</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/145001" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【4月19日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/4/19｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/142614" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ体験ラン vol.2 with 深北男塾</div>
+          <div class="event-meta">2026/4/19｜兵庫県・六甲山</div>
+          <div class="event-desc">深北男塾コラボのバックヤード体験イベント第2弾。気軽に参加できるフォーマット。</div>
+          <div class="event-theme">— 走ることは、遊ぶこと</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/144979" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【4月12日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/4/12｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/140854" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">Fairy Trail Short コース試走会</div>
+          <div class="event-meta">2026/6/13｜兵庫県</div>
+          <div class="event-desc">フェアリートレイルShortコースの試走会。本番前の実践練習として開催。</div>
+          <div class="event-theme">— 本番前の最終確認</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/140969" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">【3月29日】ゆるっとはじめるトレイルランニング講習&練習会</div>
+          <div class="event-meta">2026/3/29｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/142731" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラ体験ラン vol.1 with 深北男塾</div>
+          <div class="event-meta">2026/2/14｜兵庫県・六甲山</div>
+          <div class="event-desc">バレンタインデーの朝、深北男塾とのバックヤード体験イベント第1弾。参加費500円。</div>
+          <div class="event-theme">— 走ることは、遊ぶこと</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/139900" target="_blank" class="event-card" data-cat="講習" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">講習・練習会</span>
+          <div class="event-title">ゆるっとはじめるトレイルランニング講習&練習会（2月）</div>
+          <div class="event-meta">2026/2/22｜兵庫県・六甲山</div>
+          <div class="event-desc">登り・下りのレクチャー＋動画フォームチェック＋シューズ試し履き。安井和史氏講師。</div>
+          <div class="event-theme">— ここから始まる、山との出会い</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/139466" target="_blank" class="event-card" data-cat="縦走" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第1回 高島トレイル全縦走ツアー2025</div>
+          <div class="event-meta">2025/9/13〜14｜滋賀県高島市</div>
+          <div class="event-desc">高島トレイル80km / 6100mD+の第1回開催。12の山をピークハントしながら縦走。</div>
+          <div class="event-theme">— 日本海と琵琶湖、両方見える稜線へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/121773" target="_blank" class="event-card" data-cat="縦走" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">縦走ツアー</span>
+          <div class="event-title">第1回 ウルトラダイトレ縦走ツアー2025 ＆ NNORMALシューズ試し履き</div>
+          <div class="event-meta">2025/8/15〜16｜奈良県〜大阪府</div>
+          <div class="event-desc">まやとねこ×TSSコラボ。ダイトレ105km / 5600mD+。NNORMALシューズ試し履き同時開催。</div>
+          <div class="event-theme">— はじまりの一歩</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/148357" target="_blank" class="event-card" data-cat="バックヤード" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">バックヤードウルトラ</span>
+          <div class="event-title">バックヤードウルトラトライアル 100k/15h 真夏の夜間走練習会</div>
+          <div class="event-meta">2026/7/19〜20｜兵庫県・掬星台</div>
+          <div class="event-desc">掬星台でのバックヤードウルトラ形式夜間走。15時間100km相当に挑む。</div>
+          <div class="event-theme">— 夜の山で、限界の先へ</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
+    <a href="https://moshicom.com/148358" target="_blank" class="event-card" data-cat="島" data-status="closed" style="text-decoration:none;opacity:0.65;">
+      <div class="event-card-inner">
+        <div class="event-card-text">
+          <span style="display:inline-block;padding:0.2rem 0.7rem;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(242,237,228,0.12);color:rgba(242,237,228,0.4);margin-bottom:0.8rem;font-family:'Inter',sans-serif;">開催終了</span>
+          <span class="event-tag">ユニークコース</span>
+          <div class="event-title">沼島ONOKOROラウンドトレイル2026（追加募集）</div>
+          <div class="event-meta">2026/5/29〜31｜兵庫県・沼島</div>
+          <div class="event-desc">沼島ラウンドトレイル vol.1 追加募集枠。国生み神話の地を走る。</div>
+          <div class="event-theme">— 神話の島を、ぐるぐると</div>
+        </div>
+        <!-- 写真: <img src="photo.jpg" class="event-card-photo"> -->
+        <div class="event-card-photo-placeholder">Photo</div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -882,16 +1106,14 @@
 </footer>
 
 <script>
-  // カテゴリーフィルター
-  function filterEvents(cat, btn) {
+  // カテゴリー×ステータス2軸フィルター
+  function filterEvents(cat, status, btn) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.event-card').forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+      const catOk = (cat === 'all' || card.dataset.cat === cat);
+      const stOk  = (status === 'all' || card.dataset.status === status);
+      card.style.display = (catOk && stOk) ? 'block' : 'none';
     });
   }
 
